@@ -1,0 +1,97 @@
+@import "../../../../../styles.scss";
+
+.dialog-close-wrapper {
+  position: relative;
+  font-size: 3rem;
+  text-align: right;
+  margin: 0;
+  padding: 0;
+}
+
+.dialog-close {
+  cursor: pointer;
+  color: white;
+  position: absolute;
+  top: -2rem;
+  right: 0;
+  transition: color 0.3s ease;
+}
+
+.dialog-close:hover {
+  color: darken(white, 20);
+}
+
+.rep-detail {
+  color: white;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.rep-detail-profile {
+  display: flex;
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+  border-radius: 50%;
+  min-height: 180px;
+  width: 180px;
+  margin: 0 1rem 1rem;
+}
+
+.rep-detail-name-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.rep-detail-name {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.rep-detail-title {
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+.rep-detail-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.rep-detail-social a {
+  color: white;
+  margin: 0.5rem 1rem 0 0;
+}
+
+.rep-detail-social li {
+  color: $tertiary-color;
+  background: white;
+  margin: 0.5rem 1rem 0 0;
+}
+
+li {
+  cursor: default !important;
+}
+
+.rep-detail-btn {
+  cursor: pointer;
+  border: 1px solid white;
+  border-radius: 2rem;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0.5rem 1rem;
+  font-size: 0.7rem;
+  font-weight: bolder;
+  transition: background 0.5s ease;
+  background-position: center;
+}
+
+.rep-detail-info {
+  color: white;
+}

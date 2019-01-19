@@ -1,0 +1,44 @@
+@import '../../styles.scss';
+
+nav {
+  position: absolute;
+  top: 0;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin: 1rem 0;
+}
+
+a {
+  transition: background 0.1s ease;
+}
+
+a:hover {
+  font-weight: bolder;
+}
+//
+// .active {
+//   background-color: $secondary-color !important;
+//   color: white !important;
+// }
+//
+// li a:hover {
+//   background-color: darken($secondary-color, 5) !important;
+//   color: white !important;
+// }
+
+.nav-logo {
+  max-width: 10rem;
+}
+
+.collapsible-nav {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  font-size: 2rem;
+}

@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <div class="row pt-5">
+    <div class="col">
+      <span class="page-title">YOUR REPRESENTATIVES</span>
+    </div>
+    <div class="col text-right">
+      <button type="button" name="button" class="mx-2 mat-elevation-z3 filter-btn" (click)="localFilter()">LOCAL</button>
+      <button type="button" name="button" class="mx-2 mat-elevation-z3 filter-btn" (click)="stateFilter()">STATE</button>
+      <button type="button" name="button" class="mx-2 mat-elevation-z3 filter-btn" (click)="federalFilter()">FEDERAL</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col rep-wrapper" *ngIf="representatives | async as reps; else spinner">
+      <div class="rep-card" *ngFor="let rep of reps | filter: filterObj" (click)="openRepDetail(rep)">
+        <div class="rep-card-profile">
+          <img class="rep-card-img" [src]="rep.photoUrl || 'assets/blank_profile.jpg'">
+        </div>
+        <span class="rep-card-name">{{ rep?.name | uppercase }}</span>
+        <span class="rep-card-title">{{ rep?.party | uppercase }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #spinner>
+  <div class="col">
+    <app-spinner></app-spinner>
+  </div>
+</ng-template>

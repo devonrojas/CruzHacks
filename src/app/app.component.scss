@@ -1,0 +1,16 @@
+@import "../styles.scss";
+
+.navbar {
+  border-right: 2px solid $tertiary-color;
+  min-width: 275px;
+  max-width: 275px;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 9;
+}
+
+.main {
+  margin-left: 275px;
+}

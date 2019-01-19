@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+$primary-color: #e0f7fa;
+$secondary-color: #1142AA;
+$tertiary-color: #6200EE;
+$accent-color: #80deea;
+
+$primary-gradient: linear-gradient(to bottom right, $primary-color, lighten($primary-color, 15));
+$secondary-gradient: linear-gradient(to top right, $secondary-color, lighten($secondary-color, 10));
+$tertiary-gradient: linear-gradient(to top right, $tertiary-color, lighten($tertiary-color, 10));
+$accent-gradient: linear-gradient(to top right, $accent-color, lighten($accent-color, 10));
+
+body {
+  font-family: 'Raleway', sans-serif !important;
+  background: $primary-gradient !important;
+  min-height: 100vh;
+  color: $secondary-color !important;
+}
+
+button {
+  outline: none;
+}
+
+a {
+  color: $tertiary-color;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.page-title {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.mat-dialog-container {
+  background: $tertiary-gradient;
+}

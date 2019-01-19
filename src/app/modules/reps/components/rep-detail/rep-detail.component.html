@@ -1,0 +1,29 @@
+<div mat-dialog-content>
+  <div class="dialog-close-wrapper">
+    <span class="dialog-close" (click)="close()">&times;</span>
+  </div>
+  <div class="rep-detail">
+    <div class="rep-detail-profile">
+      <img [src]="rep.photoUrl || 'assets/blank_profile.jpg'" alt="" class="rep-detail-img">
+    </div>
+    <div class="rep-detail-name-wrapper">
+      <div class="rep-detail-name">{{ rep.name || "Representative Name" }}</div>
+      <div class="rep-detail-title">{{ rep.title || "Representative Title" }}</div>
+      <div class="rep-detail-social">
+        <a [href]="channel.id" *ngFor="let channel of rep.channels" class="rep-detail-btn" target="blank">{{channel.type | uppercase }}</a>
+        <a *ngIf="rep.urls" [href]="rep.urls[0]" class="rep-detail-btn" target="blank">WEBSITE</a>
+        <li class="rep-detail-btn">{{ rep.phones[0] }}</li>
+      </div>
+    </div>
+  </div>
+  <div class="rep-detail-info">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor augue
+      vel leo ultrices dapibus. Vestibulum sed sapien massa. Praesent non aliquet purus.
+      Quisque vehicula hendrerit elit sed eleifend. Mauris commodo blandit justo, eu
+      eleifend felis ullamcorper sit amet. Etiam ut nunc dolor. Vestibulum eu fermentum elit.
+  </div>
+</div>
+
+<ng-template #spinner>
+  <app-spinner></app-spinner>
+</ng-template>
