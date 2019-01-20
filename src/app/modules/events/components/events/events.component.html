@@ -10,8 +10,11 @@
         <div class="calendar-day" *ngFor="let event of events | async">
           <a [href]="event.url" target="blank">
             <div class="event-title">
-              {{ event.title }}
+              <span>{{ event.title }}</span>
             </div>
+            <span class="event-date">
+              {{ event.time | date: 'shortDate' }}
+            </span>
             <div class="event-location">
               {{ event.location?.city }}, {{ event.location?.state}}
             </div>

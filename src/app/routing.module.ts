@@ -12,13 +12,13 @@ import { LoginComponent } from './modules/registration/components/login/login.co
 import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
-  { path: 'home', component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: 'reps', component: RepsComponent, canActivate: [AuthGuard] },
-  { path: 'events', component: EventsComponent, canActivate: [AuthGuard] },
-  { path: 'news', component: NewsComponent, canActivate: [AuthGuard] },
-  { path: 'registration', component:  RegistrationComponent, canActivate: [AuthGuard] },
-  { path: 'resources', component: ResourcesComponent, canActivate: [AuthGuard] },
-  { path: 'login', component: LoginComponent },
+  { path: 'home', component: DashboardComponent},
+  { path: 'reps', component: RepsComponent },
+  { path: 'events', component: EventsComponent },
+  { path: 'news', component: NewsComponent},
+  { path: 'registration', component:  RegistrationComponent },
+  { path: 'resources', component: ResourcesComponent },
+  // { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ]
 

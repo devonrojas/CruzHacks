@@ -35,22 +35,6 @@ export class RepsComponent implements OnInit {
     })
   }
 
-  // localFilter() {
-  //   this.filterObj = {
-  //     city: this.location.city
-  //   };
-  // }
-  //
-  // stateFilter() {
-  //   this.filterObj = {
-  //     state: this.location.state
-  //   };
-  // }
-
-  federalFilter() {
-    this.filterObj = null
-  }
-
   ngOnInit() {
     navigator.geolocation.getCurrentPosition(pos => {
       this.representatives = this.location.getLocation(pos)
