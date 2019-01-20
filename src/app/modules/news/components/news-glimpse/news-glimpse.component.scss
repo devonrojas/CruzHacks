@@ -1,0 +1,40 @@
+@import "../../../../../styles.scss";
+
+.article-card {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  background: rgba(white, 0.5);
+  box-shadow: 1px 1px 30px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  transition: opacity 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  margin: 1rem;
+}
+
+.article-card:hover {
+  box-shadow: 1px 1px 30px 2px rgba(0, 0, 0, 0.2);
+}
+
+.article-image {
+  border-radius: 0.5rem;
+}
+
+.article-info {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  background: rgba(white, 0.8);
+  padding: 1rem;
+  position: absolute;
+  top: 0;
+}
+
+.article-title {
+  font-size: 1rem;
+  font-weight: bolder;
+}
+
+.article-desc {
+  font-size: 0.9rem;
+}

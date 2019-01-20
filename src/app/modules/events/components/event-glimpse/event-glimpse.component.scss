@@ -1,0 +1,52 @@
+@import "../../../../../styles.scss";
+
+.event-card {
+  color: white;
+  cursor: pointer;
+  display: flex;
+  flex: 0 1 1;
+  flex-direction: column;
+  position: relative;
+  background: rgba(white, 0.2);
+  box-shadow: 1px 1px 30px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  transition: opacity 0.3s ease, box-shadow 0.3s ease;
+  // max-height: 10rem;
+  margin: 1rem;
+}
+
+.event-card:hover {
+  box-shadow: 1px 1px 30px 2px rgba(0, 0, 0, 0.2);
+}
+
+.event-card-content {
+  padding: 0 1rem 1rem;
+}
+
+.event-card-image {
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+}
+
+.event-header {
+  margin-top: 0.5rem;
+}
+
+.event-title {
+  display: flex;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.event-card a {
+  color: white;
+}
+
+.event-date {
+  font-size: 2rem;
+  position: absolute;
+  top: -0.3rem;
+  right: 0.3rem;
+  vertical-align: top;
+}

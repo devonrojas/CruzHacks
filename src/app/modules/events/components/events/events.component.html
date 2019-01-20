@@ -1,3 +1,16 @@
-<p>
-  events works!
-</p>
+<div class="container-fluid">
+  <div class="row pt-3">
+    <div class="col">
+      <span class="page-title">EVENT CALENDAR</span>
+    </div>
+  </div>
+  <div class="row calendar">
+    <div class="col">
+      <div class="calendar-week" *ngFor="let week of weeks" [ngClass]="{'week-end': week.days[0].dayNo == 1, 'week-start': week.days[week.days.length - 1] == this.totalDays}">
+        <div class="calendar-day" *ngFor="let day of week.days">
+          {{ day.dayNo }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

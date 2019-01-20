@@ -11,7 +11,7 @@ $accent-color: #80deea;
 $primary-gradient: linear-gradient(to bottom right, $primary-color, lighten($primary-color, 15));
 $secondary-gradient: linear-gradient(to top right, $secondary-color, lighten($secondary-color, 10));
 $tertiary-gradient: linear-gradient(to top right, $tertiary-color, lighten($tertiary-color, 10));
-$accent-gradient: linear-gradient(to top right, $accent-color, lighten($accent-color, 10));
+$accent-gradient: linear-gradient(to top right, $accent-color, lighten($accent-color, 2));
 
 body {
   font-family: 'Raleway', sans-serif !important;

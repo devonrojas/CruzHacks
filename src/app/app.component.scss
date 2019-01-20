@@ -14,3 +14,13 @@
 .main {
   margin-left: 275px;
 }
+
+.user-profile {
+  position: fixed;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 2;
+  box-shadow: 1px 1px 5px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  width: 2.2rem;
+}

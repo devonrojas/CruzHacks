@@ -18,9 +18,16 @@ a {
   transition: background 0.1s ease;
 }
 
-a:hover {
+a {
+  font-size: 0.8rem;
   font-weight: bolder;
+  transition: transform 0.3s ease;
 }
+
+a:hover {
+  transform: translateX(10px);
+}
+
 //
 // .active {
 //   background-color: $secondary-color !important;

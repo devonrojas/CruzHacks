@@ -8,7 +8,7 @@
     </div>
     <div class="rep-detail-name-wrapper">
       <div class="rep-detail-name">{{ rep.name || "Representative Name" }}</div>
-      <div class="rep-detail-title">{{ rep.title || "Representative Title" }}</div>
+      <div class="rep-detail-title">{{ rep.office || "Representative Title" }}</div>
       <div class="rep-detail-social">
         <a [href]="channel.id" *ngFor="let channel of rep.channels" class="rep-detail-btn" target="blank">{{channel.type | uppercase }}</a>
         <a *ngIf="rep.urls" [href]="rep.urls[0]" class="rep-detail-btn" target="blank">WEBSITE</a>

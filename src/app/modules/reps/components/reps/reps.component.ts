@@ -2,10 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 
 import { QueryService } from '../../../../services/query.service';
+import { LocationService } from '../../../../services/location.service';
+
 import { RepDetailComponent } from '../rep-detail/rep-detail.component';
 import { Representative, Address } from '../../../../models/rep';
 
-import { Observable } from 'rxjs';
+import { Observable, empty } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-reps',
@@ -15,17 +18,15 @@ import { Observable } from 'rxjs';
 export class RepsComponent implements OnInit {
 
   representatives: Observable<Representative[]>;
+  shortLocation: string;
 
   filterObj: {} = null;
 
-  location: Address = {
-    line1: '13436 San Pasqual Rd',
-    city: 'San Diego',
-    state: 'CA',
-    zip: '92025'
-  };
-
-  constructor(private dialog: MatDialog, private query: QueryService) { }
+  constructor(
+    private dialog: MatDialog,
+    private query: QueryService,
+    private location: LocationService
+  ) { }
 
   openRepDetail(rep) {
     let dialogRef = this.dialog.open(RepDetailComponent, {
@@ -34,24 +35,32 @@ export class RepsComponent implements OnInit {
     })
   }
 
-  localFilter() {
-    this.filterObj = {
-      city: this.location.city
-    };
-  }
-
-  stateFilter() {
-    this.filterObj = {
-      state: this.location.state
-    };
-  }
+  // localFilter() {
+  //   this.filterObj = {
+  //     city: this.location.city
+  //   };
+  // }
+  //
+  // stateFilter() {
+  //   this.filterObj = {
+  //     state: this.location.state
+  //   };
+  // }
 
   federalFilter() {
     this.filterObj = null
   }
 
   ngOnInit() {
-    this.representatives = this.query.getRepresentatives(this.location.line1);
+    navigator.geolocation.getCurrentPosition(pos => {
+      this.representatives = this.location.getLocation(pos)
+      .pipe(
+        switchMap(loc => {
+          this.shortLocation = loc.address_components.city + ',' + loc.address_components.state;
+          return this.query.getRepresentatives(loc.fullAddress)
+        })
+      )
+    })
   }
 
 }

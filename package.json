@@ -37,6 +37,7 @@
     "express": "^4.16.4",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.10.0",
+    "lodash": "^4.17.11",
     "path": "^0.12.7",
     "rxjs": "~6.2.0",
     "typescript": "~2.9.2",

@@ -1,5 +1,5 @@
 <div class="container-fluid h-100">
-  <div class="row pt-5">
+  <div class="row pt-3">
     <div class="col">
       <span class="page-title">DASHBOARD</span>
     </div>
@@ -7,62 +7,52 @@
   <div class="row">
     <div class="col">
       <div class="content-row content-center">
-        <div class="content-card">
+        <div class="content-card" routerLink="/groups">
           <div class="content-title">
-            REPRESENTATIVES
+            YOUR GROUPS
+          </div>
+          <div class="groups">
+            <div class="group-item" *ngFor="let group of groups; let i = index">
+              <div class="group-title">
+                GROUP #{{ i + 1 }}
+              </div>
+              <div class="group-members">
+                <img src="assets/blank_profile.jpg" alt="" class="group-member">
+                <img src="assets/blank_profile.jpg" alt="" class="group-member">
+                <img src="assets/blank_profile.jpg" alt="" class="group-member">
+                <span class="extra-group-members">
+                  <img src="assets/blank_profile.jpg" alt="" class="group-member">
+                  <span class="extra-group-members-total">4</span>
+                </span>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="content-card">
+        <div class="content-card" routerLink="/news">
           <div class="content-title">
-            NEWS
+            <div class="row">
+              <div class="col">
+                NEWS
+              </div>
+              <div class="col text-right">
+                {{ articleIndex + 1 }} / {{ (articles|async)?.length }}
+              </div>
+            </div>
           </div>
+          <span class="prev arrow" (click)="prevArticle()">&#8249;</span>
+          <span class="next arrow" (click)="nextArticle()">&#8250;</span>
+          <span *ngIf="articles | async as articles">
+            <news-glimpse [article]="articles[articleIndex]"></news-glimpse>
+          </span>
         </div>
       </div>
       <div class="content-row content-center">
-        <div class="content-card">
+        <div class="content-card" routerLink="/events">
           <div class="content-title">
             SUGGESTED EVENTS
           </div>
           <div class="event-row">
-            <div class="event-card">
-              <div class="event-header">
-                <span class="event-title"><a [href]="eventURI">TEST</a></span>
-                <span class="event-date">1/14</span>
-              </div>
-              <div class="event-img">
-
-              </div>
-              <div class="event-description">
-                Lorem ipsum dolor sit amet.
-              </div>
-            </div>
-            <div class="event-card">
-              <div class="event-header">
-                <span class="event-title">TEST</span>
-                <span class="event-date">1/15</span>
-              </div>
-              <div class="event-description">
-                Lorem ipsum dolor sit amet.
-              </div>
-            </div>
-            <div class="event-card">
-              <div class="event-header">
-                <span class="event-title">TEST</span>
-                <span class="event-date">1/16</span>
-              </div>
-              <div class="event-description">
-                Lorem ipsum dolor sit amet.
-              </div>
-            </div>
-            <div class="event-card">
-              <div class="event-header">
-                <span class="event-title">TEST</span>
-                <span class="event-date">1/17</span>
-              </div>
-              <div class="event-description">
-                Lorem ipsum dolor sit amet.
-              </div>
-            </div>
+            <event-glimpse *ngFor="let event of events" [event]="event"></event-glimpse>
           </div>
         </div>
       </div>

@@ -5,8 +5,8 @@ export interface Representative {
   phones: string[];
   urls: string[];
   photoUrl: string;
-  channels: Channel[]
-  scope: string;
+  channels: Channel[];
+  office: string;
 }
 
 export interface Address {

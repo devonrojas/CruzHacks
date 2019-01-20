@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 
 import { Representative } from '../models/rep';
 
 import { map } from 'rxjs/operators';
+
+import * as _ from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -18,43 +20,61 @@ export class QueryService {
   ANON_OAUTH: string = 'AHLFBCQFQBBGSFI54FTY';
 
   repURI: string = 'https://immense-fortress-36457.herokuapp.com';
-  eventURI: string = `https://www.eventbrite.com/oauth/authorize?response_type=token&client_id=${this.APP_KEY}&redirect_uri=localhost:4200`
+  eventURI: string = `https://www.eventbriteapi.com/v3/events/search`
 
   constructor(private http: HttpClient) { }
 
   getRepresentatives(location: string) {
     let params = new HttpParams()
     .set('address', location);
-    return this.http.get<Representative[]>(this.repURI + '/reps', {params: params})
+    return this.http.get<any[]>(this.repURI + '/reps', {params: params})
     .pipe(
-      map(reps => reps.map(rep => {
-        let r = rep;
-        if(rep.channels) {
-          let channels = rep.channels.map(channel => {
-            let uri = "https://www.";
-            let c = channel;
-            if(channel.type === 'Facebook') {
-              c.id = uri + 'facebook.com/' + c.id;
-            } else if (channel.type === 'Twitter') {
-              c.id = uri + 'twitter.com/' + c.id;
-            } else if (channel.type === 'YouTube') {
-              c.id = uri + 'youtube.com/' + c.id;
+      map((reps:any) => {
+        return reps.officials.map((rep, index) => {
+          let r = rep;
+          for(let i = 0; i < reps.offices.length; i++) {
+            if(reps.offices[i].officialIndices.includes(index)) {
+              r.office = reps.offices[i].name;
+              return r;
             }
-            return c;
-          })
-          r.channels = channels;
-        }
-        // if(rep.address) {
-        //   let address = rep.address;
-        //   rep.scope = 'test';
-        // }
-        return r;
-      }))
-    );
+          }
+        })
+      })
+    )
+      // map()
+      //   rep.offices.forEach(office => {
+      //     if(office.officialIndices.contains(index)) {
+      //       r.office = office.name;
+      //     }
+      //   })
+      //   if(rep.channels) {
+      //     let channels = rep.channels.map(channel => {
+      //       let uri = "https://www.";
+      //       let c = channel;
+      //       if(channel.type === 'Facebook') {
+      //         c.id = uri + 'facebook.com/' + c.id;
+      //       } else if (channel.type === 'Twitter') {
+      //         c.id = uri + 'twitter.com/' + c.id;
+      //       } else if (channel.type === 'YouTube') {
+      //         c.id = uri + 'youtube.com/' + c.id;
+      //       }
+      //       return c;
+      //     })
+      //     r.channels = channels;
+      //   }
+      //   return r;
+      // }))
   }
 
-  getEvents(keyword: string) {
-    let params: HttpParams = new HttpParams().set('q', keyword);
-    // return this.http.get(this.eventURI, {params: params});
-  }
+  // Need Cloud function to handle request
+  // getEvents(keyword: string) {
+  //   let params: HttpParams = new HttpParams().set('q', keyword);
+  //   let headers: HttpHeaders = new HttpHeaders()
+  //   .set('Content-Type', 'application/json')
+  //   .set('Authorization', `Bearer ${this.PERSONAL_OAUTH}`);
+  //   this.http.get(this.eventURI, {headers: headers, params: params})
+  //   .subscribe(res => {
+  //     console.log(res);
+  //   });
+  // }
 }
