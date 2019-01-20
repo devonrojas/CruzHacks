@@ -10,8 +10,26 @@ import { Observable } from 'rxjs';
 })
 export class DashboardComponent implements OnInit {
 
-  events: any[] = [{date: '1/14'}, {date: '1/15'}, {date: '1/16'}, {date: '1/17'}];
-  groups: string[] = ['0', '0', '0', '0'];
+  events: any[] = [
+    {date: '1/14', photo: 'assets/img1.jpeg', title: "Women's March"},
+    {date: '1/15', photo: 'assets/img2.jpeg', title: "March For Our Lives"},
+    {date: '1/16', photo: 'assets/img3.jpeg', title: "Santa Cruz Town Hall"},
+    {date: '1/17', photo: 'assets/img4.jpeg', title: "Primary Canvassing"}
+  ];
+  groups: any[] = [
+    {
+      name: "Women's March"
+    },
+    {
+      name: "Libertarian Party Meetup"
+    },
+    {
+      name: "Volunteer For Change"
+    },
+    {
+      name: "March For Our Lives"
+    }
+  ];
   articles: Observable<any[]>;
   articleIndex: number = 0;
 

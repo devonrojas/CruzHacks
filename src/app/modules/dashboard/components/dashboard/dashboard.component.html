@@ -12,9 +12,9 @@
             YOUR GROUPS
           </div>
           <div class="groups">
-            <div class="group-item" *ngFor="let group of groups; let i = index">
+            <div class="group-item" *ngFor="let group of groups;">
               <div class="group-title">
-                GROUP #{{ i + 1 }}
+                {{ group.name | uppercase }}
               </div>
               <div class="group-members">
                 <img src="assets/blank_profile.jpg" alt="" class="group-member">

@@ -1,13 +1,13 @@
 <div class="event-card">
   <a href="#">
-    <img src="https://c1.staticflickr.com/2/1520/24330829813_944c817720_b.jpg" alt="" class="img-fluid event-card-image">
+    <img [src]="event.photo" alt="" class="img-fluid event-card-image">
     <span class="event-date">{{ event.date }}</span>
     <div class="event-card-content">
       <div class="event-header">
-        <span class="event-title">EVENT NAME</span>
+        <span class="event-title">{{ event.title }}</span>
       </div>
       <div class="event-description">
-        Lorem ipsum dolor sit amet.
+        Event Description Here
       </div>
     </div>
   </a>

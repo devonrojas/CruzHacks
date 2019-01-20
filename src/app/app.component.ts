@@ -14,7 +14,7 @@ import { tap } from 'rxjs/operators';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'CruzHacks';
+  title = 'Politity';
   user: any;
 
   navEnabled: Observable<boolean>;
