@@ -1,10 +1,17 @@
 <nav id="navbar">
-  <ul class="p-3 my-5">
+  <h2 class="p-3 mt-3 nav-title">POLITITY</h2>
+  <ul class="p-3">
     <li>NAVIGATION</li>
     <li><a routerLink="/home">HOME</a></li>
+    <!-- <li><a routerLink="/news">NEWS</a></li> -->
     <li><a routerLink="/reps">REPRESENTATIVES</a></li>
     <li><a routerLink="/events">EVENTS</a></li>
     <li class="mt-5">RESOURCES</li>
-    <li><a href="#">REGISTER TO VOTE</a></li>
+    <li><a href="https://registertovote.ca.gov/" target="blank" class="resource">REGISTER TO VOTE</a></li>
+    <li><a href="https://www.cdss.ca.gov/food-nutrition/calfresh" target="blank" class="resource">APPLY FOR CALFRESH</a></li>
+    <li><a href="https://www.cdss.ca.gov/CalWORKS" target="blank" class="resource">APPLY FOR CALWORKS</a></li>
+    <li><a href="#" class="resource">FIND YOUR POLLING PLACE</a></li>
+    <li><button type="button" name="button" (click)="logOut()" class="logout">LogOut</button></li>
+    <li class="copyright">&copy; 2019 Politity</li>
   </ul>
 </nav>

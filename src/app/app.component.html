@@ -1,12 +1,15 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="container-fluid h-100">
-  <img src="assets/blank_profile.jpg" alt="User Profile" class="user-profile">
+  <span *ngIf="user | async as user" class="user-profile">
+    {{ user.displayName }}
+    <img src="assets/blank_profile.jpg" alt="User Profile">
+  </span>
   <div class="row h-100">
-    <div class="col-auto navbar">
+    <div class="col-auto navbar" *ngIf="user | async">
       <!-- Nav goes Here -->
       <navigation></navigation>
     </div>
-    <div class="col main">
+    <div class="col" [ngClass]="{'main': user | async }">
       <!-- Dashboard router -->
       <router-outlet></router-outlet>
     </div>

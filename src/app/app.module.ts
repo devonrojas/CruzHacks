@@ -21,9 +21,17 @@ import { NewsModule } from './modules/news/news.module';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
 
+// Services
 import { LocationService } from './services/location.service';
 import { NewsService } from './services/news.service';
 import { QueryService } from './services/query.service';
+import { AuthService } from './services/auth.service';
+
+// Data
+import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -34,6 +42,9 @@ import { QueryService } from './services/query.service';
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
     SharedModule,
     RoutingModule,
     DashboardModule,
@@ -43,7 +54,7 @@ import { QueryService } from './services/query.service';
     RegistrationModule,
     NewsModule
   ],
-  providers: [QueryService, NewsService, LocationService],
+  providers: [QueryService, NewsService, LocationService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

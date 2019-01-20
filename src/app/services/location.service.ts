@@ -4,21 +4,20 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, empty } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { environment } from '../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class LocationService {
-
-  api: string = 'AIzaSyB1j5rigdnPYDbqxS4zr5E0WyK-Np1Tghs';
-  uri: string = 'https://maps.googleapis.com/maps/api/geocode/json'
 
   constructor(private http: HttpClient) {}
 
   getLocation(pos) {
     let params: HttpParams = new HttpParams()
     .set('latlng', pos.coords.latitude + ',' + pos.coords.longitude)
-    .set('key', this.api);
-    return this.http.get(this.uri, {params: params})
+    .set('key', environment.googleMaps.api);
+    return this.http.get(environment.googleMaps.uri, {params: params})
     .pipe(
       map((res:any) => {
         let comps = res.results[0].address_components;
@@ -34,8 +33,4 @@ export class LocationService {
       })
     )
   }
-
-  // zipToCity() {
-  //   let params: HttpParams = new HttpParams().set('')
-  // }
 }

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
+import { environment } from '../../environments/environment';
+
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -8,14 +10,11 @@ import { map } from 'rxjs/operators';
 })
 export class NewsService {
 
-  NEWS_URI = 'https://newsapi.org/v2/everything';
-  NEWS_API: string = '70e7e15c2507424886d787925ed5e1b0';
-
   constructor(private http: HttpClient) { }
 
   getNews(keyword: string) {
-    let params: HttpParams = new HttpParams().set('q', keyword).set('apiKey', this.NEWS_API);
-    return this.http.get<any>(this.NEWS_URI, { params: params })
+    let params: HttpParams = new HttpParams().set('q', keyword).set('apiKey', environment.newsAPI.api);
+    return this.http.get<any>(environment.newsAPI.uri, { params: params })
     .pipe(
       map(res => res.articles.map(article => {
         let a = {

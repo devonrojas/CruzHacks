@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { QueryService } from '../../../../services/query.service';
+
+import { Observable } from 'rxjs';
 
 interface Week {
   weekNo: number,
@@ -18,6 +21,8 @@ export class EventsComponent implements OnInit {
   month: string;
   totalDays: number;
 
+  events: Observable<any>;
+
   dayNames: string[] = [
     'Sunday',
     'Monday',
@@ -28,17 +33,12 @@ export class EventsComponent implements OnInit {
     'Saturday'
   ]
 
-  constructor() { }
+  constructor(private query: QueryService) { }
 
   weekCount(year, month_number) {
-
-      // month_number is in the range 1..12
-
       var firstOfMonth = new Date(year, month_number-1, 1);
       var lastOfMonth = new Date(year, month_number, 0);
-
       var used = firstOfMonth.getDay() + lastOfMonth.getDate();
-
       return Math.ceil(used / 7);
   }
 
@@ -69,9 +69,8 @@ export class EventsComponent implements OnInit {
   }
 
   ngOnInit() {
-    let year = new Date().getFullYear();
-    let month = new Date().getMonth() + 1;
     this.getDays(2019, 0);
+    this.events = this.query.getEvents();
   }
 
 }

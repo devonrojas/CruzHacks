@@ -4,11 +4,18 @@
       <span class="page-title">EVENT CALENDAR</span>
     </div>
   </div>
-  <div class="row calendar">
+  <div class="row m-3">
     <div class="col">
-      <div class="calendar-week" *ngFor="let week of weeks" [ngClass]="{'week-end': week.days[0].dayNo == 1, 'week-start': week.days[week.days.length - 1] == this.totalDays}">
-        <div class="calendar-day" *ngFor="let day of week.days">
-          {{ day.dayNo }}
+      <div class="calendar">
+        <div class="calendar-day" *ngFor="let event of events | async">
+          <a [href]="event.url" target="blank">
+            <div class="event-title">
+              {{ event.title }}
+            </div>
+            <div class="event-location">
+              {{ event.location?.city }}, {{ event.location?.state}}
+            </div>
+          </a>
         </div>
       </div>
     </div>
